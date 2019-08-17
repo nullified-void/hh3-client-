@@ -58,8 +58,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="response.cs" />
+    <Compile Include="addpage.xaml.cs">
+      <DependentUpon>addpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="editdialog.xaml.cs">
+      <DependentUpon>editdialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="loginpage.xaml.cs">
+      <DependentUpon>loginpage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserClass.cs" />
+    <Page Include="addpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="editdialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="loginpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

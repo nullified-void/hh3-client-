@@ -16,3 +16,9 @@ C:\Users\1\source\repos\Client\Client\obj\Debug\Client.csproj.CoreCompileInputs.
 C:\Users\1\source\repos\Client\Client\obj\Debug\Client.csproj.CopyComplete
 C:\Users\1\source\repos\Client\Client\obj\Debug\Client.exe
 C:\Users\1\source\repos\Client\Client\obj\Debug\Client.pdb
+C:\Users\1\source\repos\Client\Client\obj\Debug\editdialog.g.cs
+C:\Users\1\source\repos\Client\Client\obj\Debug\editdialog.baml
+C:\Users\1\source\repos\Client\Client\obj\Debug\addpage.g.cs
+C:\Users\1\source\repos\Client\Client\obj\Debug\addpage.baml
+C:\Users\1\source\repos\Client\Client\obj\Debug\loginpage.g.cs
+C:\Users\1\source\repos\Client\Client\obj\Debug\loginpage.baml
