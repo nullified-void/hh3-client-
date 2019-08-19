@@ -39,7 +39,7 @@ namespace Client
             MainWindow.Transfer.transferuser.SecondName = SecondName.Text;
             MainWindow.Transfer.transferuser.LastName = LastName.Text;
             MainWindow.Transfer.transferuser.DateOfB = DateOfB.Text;
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:59735/api/values/add");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(MainWindow.Transfer.api.add);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 

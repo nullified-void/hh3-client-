@@ -1,0 +1,7 @@
+{
+ "add": "http://localhost:59735/api/values/add",
+ "get": "http://localhost:59735/api/values/get",
+ "delete": "http://localhost:59735/api/values/delete",
+ "auth": "http://localhost:59735/api/values/auth",
+ "edit": "http://localhost:59735/api/values/edit"
+}

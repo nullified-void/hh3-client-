@@ -30,11 +30,13 @@ namespace Client
         public int pagesCount;
         public List<User> userlist = new List<User>();
         
+        
         public int n = -10;
         public class Transfer
         {
             public static logininfo log = new logininfo();
             public static User transferuser = new User();
+            public static APIs api = new APIs();
         }
         public MainWindow()
         {
@@ -50,10 +52,9 @@ namespace Client
         {
             using (var wb = new WebClient())
             {
-
+                Transfer.api = JsonConvert.DeserializeObject<APIs>(File.ReadAllText("APIs.txt"));
                 var data = new NameValueCollection();
-                string url = "http://localhost:59735/api/values/get";
-                var response = wb.UploadValues(url, "POST", data);
+                var response = wb.UploadValues(Transfer.api.get, "POST", data);
                 string responseInString = Encoding.UTF8.GetString(response);
                 userlist.AddRange(JsonConvert.DeserializeObject<List<User>>(responseInString));
                 BtnNEXT_Click(null, null);
@@ -110,7 +111,16 @@ namespace Client
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (Transfer.log.access == "user")
+            {
+                MessageBox.Show("Недостаточно прав для осуществения действия", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            if (Transfer.log.access == null)
+            {
+                MessageBox.Show("Вы должны зайти в сеть для осуществления данного действия", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
             if (DataGrid.SelectedItem == null)
                 return;
 
@@ -138,6 +148,16 @@ namespace Client
 
         private void Addbtn_Click(object sender, RoutedEventArgs e)
         {
+            if (Transfer.log.access == "user")
+            {
+                MessageBox.Show("Недостаточно прав для осуществения действия", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            if (Transfer.log.access == null)
+            {
+                MessageBox.Show("Вы должны зайти в сеть для осуществления данного действия", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
             add_page addpage = new add_page();
             addpage.ShowDialog();
             if (Transfer.transferuser.FirstName != null)
@@ -150,10 +170,20 @@ namespace Client
 
         private void DeleteBTN_Click(object sender, RoutedEventArgs e)
         {
+            if (Transfer.log.access == "user")
+            {
+                MessageBox.Show("Недостаточно прав для осуществения действия", "Ошибка", MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                return;
+            }
+            if (Transfer.log.access == null)
+            {
+                MessageBox.Show("Вы должны зайти в сеть для осуществления данного действия", "Ошибка", MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                return;
+            }
             if (DataGrid.SelectedItem == null)
                 return;
             User userdelete = (User)DataGrid.SelectedItem;
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:59735/api/values/delete");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(Transfer.api.delete);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 
@@ -164,7 +194,6 @@ namespace Client
                 streamWriter.Write(json);
             }
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            MainWindow.Transfer.transferuser = userdelete;
             userlist.Remove(userdelete);
             DataGrid.Items.Refresh();
             BtnNEXT_Click(this,null);
@@ -181,7 +210,55 @@ namespace Client
                 loginstatus.Content = "Вы зашли как admin.";
             if (Transfer.log.access == "user")
                 loginstatus.Content = "Вы зашли как user.";
+            logoutBTN.IsEnabled = true;
+            loginBTN.IsEnabled = false;
+            userinfo.IsEnabled = true;
 
+        }
+
+        private void LogoutBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Transfer.log.access = null;
+            loginstatus.Content = "Вы не в сети.";
+            loginBTN.IsEnabled = true;
+            userinfo.IsEnabled = false;
+            logoutBTN.IsEnabled = false;
+        }
+
+        private void Userinfo_Click(object sender, RoutedEventArgs e)
+        {
+            userinfo info = new userinfo();
+            info.ShowDialog();
+        }
+
+        private void Userinfo_Initialized(object sender, EventArgs e)
+        {
+            userinfo.IsEnabled = false;
+        }
+
+        private void LogoutBTN_Initialized(object sender, EventArgs e)
+        {
+            logoutBTN.IsEnabled = false;
+        }
+
+        private void SearchBTN_Click(object sender, RoutedEventArgs e)
+        {
+            var filtered = userlist.Where(search => search.FirstName.StartsWith(searchFirstName.Text) &&
+            search.SecondName.StartsWith(searchSecondName.Text) &&
+            search.LastName.StartsWith(searchLastName.Text) &&
+            search.DateOfB.StartsWith(searchDateOfB.Text));
+
+            DataGrid.ItemsSource = filtered;
+        }
+
+        private void CanselBTN_Click(object sender, RoutedEventArgs e)
+        {
+            searchFirstName.Text = "";
+            searchSecondName.Text = "";
+            searchLastName.Text = "";
+            searchDateOfB.Text = "";
+            BtnNEXT_Click(this, null);
+            Button_Click(this, null);
         }
     }
 }

@@ -61,6 +61,7 @@
     <Compile Include="addpage.xaml.cs">
       <DependentUpon>addpage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="APIs.cs" />
     <Compile Include="editdialog.xaml.cs">
       <DependentUpon>editdialog.xaml</DependentUpon>
     </Compile>
@@ -68,6 +69,9 @@
       <DependentUpon>loginpage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserClass.cs" />
+    <Compile Include="userinfo.xaml.cs">
+      <DependentUpon>userinfo.xaml</DependentUpon>
+    </Compile>
     <Page Include="addpage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +96,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="userinfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

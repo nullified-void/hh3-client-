@@ -30,9 +30,9 @@ namespace Client
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string response = "";
-            MainWindow.Transfer.log.password = passfield.Text;
+            MainWindow.Transfer.log.password = passfield.Password;
             MainWindow.Transfer.log.username = Username.Text;
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:59735/api/values/auth");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(MainWindow.Transfer.api.auth);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 
@@ -51,6 +51,12 @@ namespace Client
             }
             MainWindow.Transfer.log.access = response.ToString();
             this.Close();
+        }
+
+        private void Passfield_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                Button_Click(null, null);
         }
     }
 }

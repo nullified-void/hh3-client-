@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 	<Grid>
-		<DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Height="339" Margin="10,10,0,0" VerticalAlignment="Top" Width="772" IsReadOnly="True"  Initialized="DataGrid_Initialized"  CanUserAddRows="False"
+		<DataGrid x:Name="DataGrid" HorizontalAlignment="Left" Height="339" Margin="10,10,0,0" VerticalAlignment="Top" Width="646" IsReadOnly="True"  Initialized="DataGrid_Initialized"  CanUserAddRows="False"
   CanUserDeleteRows="False" AutoGenerateColumns="False" >
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="ID" Binding="{Binding id}" ClipboardContentBinding="{x:Null}"/>
@@ -23,8 +23,16 @@
 		<Button x:Name="btnEdit" Content="edit" HorizontalAlignment="Left" Margin="10,363,0,0" VerticalAlignment="Top" Width="75" Click="BtnEdit_Click"/>
 		<Button x:Name="addbtn" Content="add new" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,389,0,0" Click="Addbtn_Click"/>
 		<Button x:Name="deleteBTN" Content="delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="90,378,0,0" Click="DeleteBTN_Click"/>
-		<Button x:Name="loginBTN" Content="Войти" HorizontalAlignment="Left" Margin="656,389,0,0" VerticalAlignment="Top" Width="75" Click="LoginBTN_Click"/>
+		<Button x:Name="loginBTN" Content="login" HorizontalAlignment="Left" Margin="605,389,0,0" VerticalAlignment="Top" Width="75" Click="LoginBTN_Click"/>
 		<Label x:Name="loginstatus" Content="Вы не в сети." HorizontalAlignment="Left" Margin="605,358,0,0" VerticalAlignment="Top" Width="177"/>
+		<Button x:Name="logoutBTN" Content="logout" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="707,389,0,0" Click="LogoutBTN_Click" Initialized="LogoutBTN_Initialized"/>
+		<Button x:Name="userinfo" Content="Профиль" HorizontalAlignment="Left" Margin="505,389,0,0" VerticalAlignment="Top" Width="75" Click="Userinfo_Click" Initialized="Userinfo_Initialized"/>
+		<TextBox x:Name="searchFirstName" HorizontalAlignment="Left" Height="23" Margin="662,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
+		<TextBox x:Name="searchSecondName" HorizontalAlignment="Left" Height="23" Margin="662,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="searchLastName" HorizontalAlignment="Left" Height="23" Margin="662,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="searchDateOfB" HorizontalAlignment="Left" Height="23" Margin="662,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+		<Button x:Name="SearchBTN" Content="search" HorizontalAlignment="Left" Margin="685,170,0,0" VerticalAlignment="Top" Width="75" Click="SearchBTN_Click"/>
+		<Button	x:Name="CanselBTN" Content="Cansel" HorizontalAlignment="Left" Margin="685,195,0,0" VerticalAlignment="Top" Width="75" Click="CanselBTN_Click"/>
 
 	</Grid>
 </Window>

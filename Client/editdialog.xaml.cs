@@ -52,7 +52,7 @@ namespace Client
             editeduser.SecondName = SecondNameNEW.Text;
             editeduser.LastName = LastNameNEW.Text;
             editeduser.DateOfB = DateOfBNEW.Text;
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:59735/api/values/edit");
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(MainWindow.Transfer.api.edit);
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 

@@ -22,3 +22,5 @@ C:\Users\1\source\repos\Client\Client\obj\Debug\addpage.g.cs
 C:\Users\1\source\repos\Client\Client\obj\Debug\addpage.baml
 C:\Users\1\source\repos\Client\Client\obj\Debug\loginpage.g.cs
 C:\Users\1\source\repos\Client\Client\obj\Debug\loginpage.baml
+C:\Users\1\source\repos\Client\Client\obj\Debug\userinfo.g.cs
+C:\Users\1\source\repos\Client\Client\obj\Debug\userinfo.baml
